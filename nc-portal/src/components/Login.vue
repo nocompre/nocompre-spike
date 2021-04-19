@@ -3,7 +3,7 @@
     <v-flex xs6 offset-xs>
       <div class="white elevation-2">
         <v-toolbar text dense class="grey" dark>
-          <v-toolbar-title>Registration</v-toolbar-title>
+          <v-toolbar-title>Login</v-toolbar-title>
         </v-toolbar>
 
         <div class="pl-4 pr-4 pt-2 pb-2">
@@ -21,7 +21,7 @@
             v-model="password"></v-text-field>
           <br>
           <br>
-          <v-btn @click="register" class='grey' dark>Submit</v-btn>
+          <v-btn @click="login" class='grey' dark>Submit</v-btn>
           <br>
           <br>
           <div class="error" v-html="error" />
@@ -45,15 +45,15 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       this.error = null
       this.response = null
       try {
-        await AuthenticationService.register({
+        await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
-        this.response = 'Successfully created.'
+        this.response = 'Successfully logged in.'
       } catch (err) {
         this.error = err.response.data.error
       }

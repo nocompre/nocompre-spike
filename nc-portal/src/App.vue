@@ -1,13 +1,23 @@
 <template>
   <div id="app">
-    <img src="./assets/Nocompre-Ltr-Logo-small1.png">
-    <router-view/>
+    <v-app light>
+      <page-header />
+      <main>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </main>
+    </v-app>
   </div>
 </template>
 
 <script>
+import PageHeader from '@/components/Header.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    PageHeader
+  }
 }
 </script>
 
@@ -18,6 +28,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
+}
+.error {
+  color: rgba(45, 105, 70, 0.097);
+}
+.response {
+  color: green;
 }
 </style>

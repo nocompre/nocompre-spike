@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
+import Spike from '@/components/Spike'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -16,6 +18,16 @@ export default new Router({
       path: '/register',
       name: 'Registration',
       component: Register
+    },
+    {
+      path: '/spike',
+      name: 'Spike',
+      component: Spike
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })
