@@ -29,6 +29,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 10px;
+  background-color: #59595943;
 }
 .error {
   color: rgba(45, 105, 70, 0.097);

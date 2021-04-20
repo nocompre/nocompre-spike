@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import Vuetify from 'vuetify'
+import { sync } from 'vuex-router-sync'
 import 'vuetify/dist/vuetify.css'
 import colors from 'vuetify/es5/util/colors'
+import store from '@/store/store'
 
 // Vue.use(Vuetify)
 
@@ -16,6 +18,7 @@ Vue.use(Vuetify, {
     accent: colors.indigo.base // #3F51B5
   }
 })
+sync(store, router)
 
 Vue.config.productionTip = false
 
@@ -24,6 +27,7 @@ new Vue({
   vuetify: new Vuetify(),
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>',
   render: h => h(App)

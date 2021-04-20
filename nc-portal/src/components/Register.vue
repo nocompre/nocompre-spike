@@ -8,17 +8,21 @@
 
         <div class="pl-4 pr-4 pt-2 pb-2">
           <br>
+          <form name="sign-up-form" autocomplete="off">
           <v-text-field
-            name="email"
+            name="Email"
             label="Email"
-            v-model="email"
-            placeholder="email"></v-text-field>
+            v-model="Email"
+            placeholder="Email"></v-text-field>
           <br>
           <br>
           <v-text-field
             name="password"
             label="Password"
+            type="password"
+            autocomplete="new-password"
             v-model="password"></v-text-field>
+          </form>
           <br>
           <br>
           <v-btn @click="register" class='grey' dark>Submit</v-btn>
@@ -49,10 +53,12 @@ export default {
       this.error = null
       this.response = null
       try {
-        await AuthenticationService.register({
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.token)
         this.response = 'Successfully created.'
       } catch (err) {
         this.error = err.response.data.error
