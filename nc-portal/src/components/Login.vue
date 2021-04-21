@@ -1,40 +1,27 @@
 <template>
-  <v-layout column>
-    <v-flex xs6 offset-xs>
-      <div class="white elevation-2">
-        <v-toolbar text dense class="grey" dark>
-          <v-toolbar-title>Login</v-toolbar-title>
-        </v-toolbar>
-
-        <div class="pl-4 pr-4 pt-2 pb-2">
-          <br>
-          <v-text-field
-            name="email"
-            label="Email"
-            v-model="email"
-            placeholder="email"></v-text-field>
-          <br>
-          <br>
-          <v-text-field
-            name="password"
-            label="Password"
-            type="password"
-            v-model="password"></v-text-field>
-          <br>
-          <br>
-          <v-btn @click="login" class='grey' dark>Submit</v-btn>
-          <br>
-          <br>
-          <div class="error" v-html="error" />
-          <div class="response" v-html="response" />
-        </div>
-      </div>
-    </v-flex>
+  <v-layout column xs6 offset-xs>
+    <panel title="Login">
+      <br>
+      <v-text-field
+        label="Email"
+        v-model="email"></v-text-field>
+      <br>
+      <v-text-field
+        label="Password"
+        type="password"
+        v-model="password"></v-text-field>
+        <br>
+      <v-btn @click="login" class='grey' dark>Submit</v-btn>
+      <br>
+      <div class="error" v-html="error" />
+      <div class="response" v-html="response" />
+    </panel>
   </v-layout>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
 export default {
   name: 'Register',
   data () {
@@ -61,6 +48,9 @@ export default {
         this.error = err.response.data.error
       }
     }
+  },
+  components: {
+    Panel
   }
 }
 </script>
